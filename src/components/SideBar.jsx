@@ -10,7 +10,7 @@ const SideBar = () => {
   const isMenuOpen = useSelector((store) => store.app.isMenuOpen);
 
   return (
-    <div className="dark:bg-[#0f0f0f] text-white p-2 h-[calc(100vh-56px)] hidden md:block">
+    <div className="fixed dark:bg-[#0f0f0f] text-white p-2 h-[calc(100vh-56px)] ">
       <div className="flex flex-col items-center gap-1 p-1 py-2 my-5 hover:bg-[#303030]/[0.6] hover:rounded-lg cursor-pointer">
         <IoMdHome className="w-7 h-7" />
         <span className="text-[12px]">Home</span>
