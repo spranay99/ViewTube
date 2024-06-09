@@ -1,25 +1,9 @@
 import React from "react";
+import { TagNames } from "../utils/constants";
 
 const ButtonList = () => {
-  const TagNames = [
-    "All",
-    "Gaming",
-    "Namaste JavaScript",
-    "IPL",
-    "Akshay Saini",
-    "Music",
-    "Virat Kohli",
-    "Comedy",
-    "React",
-    "Code with Harry",
-    "Cricket",
-    "Technical Suneja",
-    "Football",
-    "News",
-  ];
-
   return (
-    <div className="fixed top-14 left-[94px] right-5 p-2 dark:bg-[#0f0f0f]">
+    <div className="fixed top-14 left-[94px] right-5 p-2 dark:bg-[#0f0f0f] z-10">
       <div className="flex text-sm gap-4 overflow-x-scroll no-scrollbar whitespace-nowrap scroll-smooth">
         {TagNames.map((item, index) => (
           <button

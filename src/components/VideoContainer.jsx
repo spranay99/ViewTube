@@ -1,18 +1,14 @@
-import React, { useEffect, useState } from "react";
-import { YOUTUBE_VIDEO_API } from "../utils/constants";
+import React from "react";
 import VideoCard from "./VideoCard";
+import HomePageShimmer from "./HomePageShimmer";
+import useVideos from "../custom-hooks/useVideos";
 
 const VideoContainer = () => {
-  const [videos, setVideos] = useState([]);
-  useEffect(() => {
-    fetchVideos();
-  }, []);
+  const [videos] = useVideos();
 
-  const fetchVideos = async () => {
-    const data = await fetch(YOUTUBE_VIDEO_API);
-    const json = await data.json();
-    setVideos(json.items);
-  };
+  if (videos.length === 0) {
+    return <HomePageShimmer />;
+  }
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 p-5 mt-8">

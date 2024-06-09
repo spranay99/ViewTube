@@ -1,28 +1,20 @@
-import React, { useEffect, useState } from "react";
-import { CHANNEL_INFO_API } from "../utils/constants";
-import { GoDotFill } from "react-icons/go";
+import React from "react";
+import { PiDotOutlineFill } from "react-icons/pi";
+import { formatNumberToReadableView, timeAgo } from "../utils/helper";
+import { FaCheckCircle } from "react-icons/fa";
+import useChannelDetails from "../custom-hooks/useChannelDetails";
 
 const VideoCard = ({ info }) => {
   const { snippet, statistics } = info;
   const { channelId, channelTitle, publishedAt, title, thumbnails } = snippet;
 
-  const [channelImage, setChannelImage] = useState(null);
-
-  useEffect(() => {
-    fetchChannelImage();
-  }, []);
-
-  const fetchChannelImage = async () => {
-    const data = await fetch(CHANNEL_INFO_API + "&id=" + channelId);
-    const response = await data.json();
-    setChannelImage(response?.items[0]?.snippet?.thumbnails?.default?.url);
-  };
+  const [channelImage] = useChannelDetails(channelId);
 
   return (
     <div className="p-2 shadow-lg">
       <img
         className="w-full rounded-lg"
-        src={thumbnails.medium.url}
+        src={thumbnails?.medium?.url}
         alt="video"
       />
       <ul className="mt-3">
@@ -34,12 +26,15 @@ const VideoCard = ({ info }) => {
           />
           <li className="font-bold line-clamp-2">{title}</li>
         </div>
-        <div className="ml-12">
-          <li>{channelTitle}</li>
-          <div className="flex gap-2 items-center">
-            <li>{statistics.viewCount} views</li>
-            <GoDotFill className="text-white" />
-            <li>{publishedAt} ago</li>
+        <div className="ml-12 opacity-85">
+          <li className="flex gap-2">
+            {channelTitle}
+            <FaCheckCircle className="my-auto" />
+          </li>
+          <div className="flex items-center">
+            <li>{formatNumberToReadableView(statistics?.viewCount)} views</li>
+            <PiDotOutlineFill className="text-white" />
+            <li>{timeAgo(publishedAt)}</li>
           </div>
         </div>
       </ul>

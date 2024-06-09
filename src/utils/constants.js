@@ -10,3 +10,25 @@ export const YOUTUBE_VIDEO_API =
 export const CHANNEL_INFO_API =
   "https://youtube.googleapis.com/youtube/v3/channels?part=snippet%2CcontentDetails%2Cstatistics&key=" +
   API_KEY;
+
+export const TagNames = [
+  "All",
+  "Gaming",
+  "Live",
+  "Namaste JavaScript",
+  "IPL",
+  "Akshay Saini",
+  "Music",
+  "Sports",
+  "Virat Kohli",
+  "Comedy",
+  "React",
+  "Code with Harry",
+  "Cricket",
+  "Technical Suneja",
+  "Football",
+  "News",
+  "Podcasts",
+  "Shopping",
+  "Finance",
+];
