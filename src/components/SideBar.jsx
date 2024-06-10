@@ -26,11 +26,45 @@ import { IoSettingsOutline } from "react-icons/io5";
 import { MdOutlineFlag } from "react-icons/md";
 import { FiHelpCircle } from "react-icons/fi";
 import { BiCommentError } from "react-icons/bi";
+import { useLocation } from "react-router-dom";
 
 const SideBar = () => {
   const isMenuOpen = useSelector((store) => store.app.isMenuOpen);
 
-  return isMenuOpen ? (
+  const location = useLocation();
+
+  if (!isMenuOpen) {
+    if (location.pathname === "/watch") {
+      return null;
+    }
+
+    return (
+      <div className="hidden sm:block fixed dark:bg-[#0f0f0f] text-white p-2 h-[calc(100vh-56px)] ">
+        <div className="flex flex-col items-center gap-1 p-1 py-2 my-5 hover:bg-[#303030]/[0.6] hover:rounded-lg cursor-pointer">
+          <IoMdHome className="w-7 h-7" />
+          <span className="text-[12px]">Home</span>
+        </div>
+        <div className="flex flex-col items-center gap-1 p-1 my-5 hover:bg-[#303030]/[0.6] hover:rounded-lg cursor-pointer">
+          <SiYoutubeshorts className="w-6 h-6" />
+          <span className="text-[12px]">Shorts</span>
+        </div>
+        <div className="flex flex-col items-center gap-1 p-1 my-5 hover:bg-[#303030]/[0.6] hover:rounded-lg cursor-pointer">
+          <MdSubscriptions className="w-6 h-6" />
+          <span className="text-[12px]">Subscriptions</span>
+        </div>
+        <div className="flex flex-col items-center gap-1 p-1 my-5 hover:bg-[#303030]/[0.6] hover:rounded-lg cursor-pointer">
+          <MdOutlineVideoLibrary className="w-6 h-6" />
+          <span className="text-[12px]">You</span>
+        </div>
+        <div className="flex flex-col items-center gap-1 p-1 my-5 hover:bg-[#303030]/[0.6] hover:rounded-lg cursor-pointer">
+          <GrHistory className="w-5 h-6" />
+          <span className="text-[12px]">History</span>
+        </div>
+      </div>
+    );
+  }
+
+  return (
     <div className="fixed w-48 lg:w-60 dark:bg-[#0f0f0f] text-white flex flex-col h-[calc(100vh-56px)] overflow-y-scroll sidebar z-50">
       <ul className="w-full flex flex-col gap-1 p-2">
         <li className="flex items-center gap-3 cursor-pointer hover:bg-[#303030]/[0.6] p-2 rounded-lg">
@@ -138,29 +172,6 @@ const SideBar = () => {
           <span className="text-md">Send Feedback</span>
         </li>
       </ul>
-    </div>
-  ) : (
-    <div className="hidden sm:block fixed dark:bg-[#0f0f0f] text-white p-2 h-[calc(100vh-56px)] ">
-      <div className="flex flex-col items-center gap-1 p-1 py-2 my-5 hover:bg-[#303030]/[0.6] hover:rounded-lg cursor-pointer">
-        <IoMdHome className="w-7 h-7" />
-        <span className="text-[12px]">Home</span>
-      </div>
-      <div className="flex flex-col items-center gap-1 p-1 my-5 hover:bg-[#303030]/[0.6] hover:rounded-lg cursor-pointer">
-        <SiYoutubeshorts className="w-6 h-6" />
-        <span className="text-[12px]">Shorts</span>
-      </div>
-      <div className="flex flex-col items-center gap-1 p-1 my-5 hover:bg-[#303030]/[0.6] hover:rounded-lg cursor-pointer">
-        <MdSubscriptions className="w-6 h-6" />
-        <span className="text-[12px]">Subscriptions</span>
-      </div>
-      <div className="flex flex-col items-center gap-1 p-1 my-5 hover:bg-[#303030]/[0.6] hover:rounded-lg cursor-pointer">
-        <MdOutlineVideoLibrary className="w-6 h-6" />
-        <span className="text-[12px]">You</span>
-      </div>
-      <div className="flex flex-col items-center gap-1 p-1 my-5 hover:bg-[#303030]/[0.6] hover:rounded-lg cursor-pointer">
-        <GrHistory className="w-5 h-6" />
-        <span className="text-[12px]">History</span>
-      </div>
     </div>
   );
 };

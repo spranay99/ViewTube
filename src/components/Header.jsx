@@ -7,6 +7,7 @@ import { FiBell } from "react-icons/fi";
 import Profile from "../assets/profile.png";
 import { useDispatch } from "react-redux";
 import { toggleMenu } from "../redux/appSlice";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -24,12 +25,14 @@ const Header = () => {
             onClick={() => handleToggleMenu()}
           />
         </div>
-        <div className="flex h-5 items-center gap-2">
-          <img className="h-full " src={LOGO} alt="Viewtube-logo" />
-          <span className="text-white font-semibold text-xl tracking-tighter hidden dark:md:block">
-            ViewTube
-          </span>
-        </div>
+        <Link to="/">
+          <div className="flex h-5 items-center gap-2">
+            <img className="h-full " src={LOGO} alt="Viewtube-logo" />
+            <span className="text-white font-semibold text-xl tracking-tighter hidden dark:md:block">
+              ViewTube
+            </span>
+          </div>
+        </Link>
       </div>
 
       <div className="group flex items-center">

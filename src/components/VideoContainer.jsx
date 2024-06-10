@@ -3,6 +3,7 @@ import VideoCard from "./VideoCard";
 import HomePageShimmer from "./HomePageShimmer";
 import useVideos from "../custom-hooks/useVideos";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 const VideoContainer = () => {
   const isMenuOpen = useSelector((store) => store.app.isMenuOpen);
@@ -19,7 +20,9 @@ const VideoContainer = () => {
       `}
     >
       {videos.map((video) => (
-        <VideoCard key={video.id} info={video} />
+        <Link to={`/watch?v=${video.id}`} key={video.id}>
+          <VideoCard info={video} />
+        </Link>
       ))}
     </div>
   );
