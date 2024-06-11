@@ -7,10 +7,11 @@ import { Link } from "react-router-dom";
 
 const VideoContainer = () => {
   const isMenuOpen = useSelector((store) => store.app.isMenuOpen);
+  const homeVideos = useSelector((store) => store.video.homeVideos);
 
-  const [videos] = useVideos();
+  useVideos();
 
-  if (videos.length === 0) {
+  if (homeVideos.length === 0) {
     return <HomePageShimmer />;
   }
   return (
@@ -19,7 +20,7 @@ const VideoContainer = () => {
       ${isMenuOpen ? "xl:grid-cols-3" : "xl:grid-cols-4"}
       `}
     >
-      {videos.map((video) => (
+      {homeVideos.map((video) => (
         <Link to={`/watch?v=${video.id}`} key={video.id}>
           <VideoCard info={video} />
         </Link>
