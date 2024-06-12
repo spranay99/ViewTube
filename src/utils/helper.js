@@ -77,3 +77,19 @@ export const timeAgo = (publishedAt) => {
     return secondsAgo === 1 ? "1 second ago" : `${secondsAgo} seconds ago`;
   }
 };
+
+export const formatDuration = (videoDuration) => {
+  const regex =
+    /P(?:([0-9]+)Y)?(?:([0-9]+)M)?(?:([0-9]+)D)?T(?:([0-9]+)H)?(?:([0-9]+)M)?(?:([0-9]+)S)?/;
+  const matches = videoDuration.match(regex);
+
+  const hours = parseInt(matches[4] || 0, 10);
+  const minutes = parseInt(matches[5] || 0, 10);
+  const seconds = parseInt(matches[6] || 0, 10);
+
+  const formattedHours = hours > 0 ? String(hours).padStart(2, "0") + ":" : "";
+  const formattedMinutes = String(minutes).padStart(2, "0");
+  const formattedSeconds = String(seconds).padStart(2, "0");
+
+  return formattedHours + formattedMinutes + ":" + formattedSeconds;
+};

@@ -13,10 +13,10 @@ const HomePageShimmer = () => {
                 <ul className="mt-3">
                   <div className="flex items-center gap-2">
                     <div className="rounded-full w-10 h-10  bg-slate-400"></div>
-                    <div className="h-4 w-7/12  bg-slate-400"></div>
+                    <div className="h-4 w-3/4  bg-slate-400"></div>
                   </div>
                   <div className="ml-12">
-                    <div className="h-4 w-1/3  bg-slate-400"></div>
+                    <div className="h-4 w-2/3  bg-slate-400"></div>
                   </div>
                 </ul>
               </div>

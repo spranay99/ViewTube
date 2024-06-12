@@ -1,22 +1,55 @@
-import React from "react";
+import React, { useState } from "react";
 import { PiDotOutlineFill } from "react-icons/pi";
-import { formatNumberToReadableView, timeAgo } from "../utils/helper";
+import {
+  formatDuration,
+  formatNumberToReadableView,
+  timeAgo,
+} from "../utils/helper";
 import { FaCheckCircle } from "react-icons/fa";
 import useChannelDetails from "../custom-hooks/useChannelDetails";
 
 const VideoCard = ({ info }) => {
-  const { snippet, statistics } = info;
+  const { snippet, statistics, contentDetails } = info;
   const { channelId, channelTitle, publishedAt, title, thumbnails } = snippet;
+  const { duration } = contentDetails;
 
+  const [hovered, setHovered] = useState(false);
   const [channelImage] = useChannelDetails(channelId);
-
   return (
-    <div className="p-2 shadow-lg">
-      <img
-        className="w-full rounded-lg"
-        src={thumbnails?.medium?.url}
-        alt="video"
-      />
+    <div
+      className="p-2 shadow-lg"
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+    >
+      <div className="relative">
+        {hovered && (
+          <div className="absolute inset-0">
+            <iframe
+              width="100%"
+              height="100%"
+              style={{ borderRadius: "0.5rem" }}
+              src={`https://www.youtube.com/embed/${info.id}?autoplay=1&mute=1&controls=0`}
+              title="YouTube video player"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+            ></iframe>
+          </div>
+        )}
+
+        <img
+          className="w-full rounded-lg"
+          src={thumbnails?.medium?.url}
+          alt="video"
+        />
+        {!hovered && (
+          <div className="absolute bottom-1 right-1 px-2 py-1">
+            <div className="absolute inset-0 bg-[#0f0f0f] opacity-60 rounded-lg"></div>
+            <div className="relative text-xs font-medium">
+              {formatDuration(duration)}
+            </div>
+          </div>
+        )}
+      </div>
       <ul className="mt-3">
         <div className="flex items-center gap-2">
           <img
