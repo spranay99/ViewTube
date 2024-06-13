@@ -93,3 +93,10 @@ export const formatDuration = (videoDuration) => {
 
   return formattedHours + formattedMinutes + ":" + formattedSeconds;
 };
+
+export const scrollToTop = () => {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth",
+  });
+};

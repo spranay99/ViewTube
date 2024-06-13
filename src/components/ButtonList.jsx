@@ -1,9 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import { TagNames } from "../utils/constants";
 import { useSelector } from "react-redux";
 
 const ButtonList = () => {
   const isMenuOpen = useSelector((store) => store.app.isMenuOpen);
+  const [activeButton, setActiveButton] = useState(0);
+
+  const handleButtonClick = (index) => {
+    setActiveButton(index);
+  };
 
   return (
     <div
@@ -15,7 +20,13 @@ const ButtonList = () => {
         {TagNames.map((item, index) => (
           <button
             key={index}
-            className={`bg-[#303030]/[0.9] hover:bg-[#303030]/[0.6] px-[12px] py-[6px] rounded-lg`}
+            className={` px-[12px] py-[6px] rounded-lg
+              ${
+                activeButton === index
+                  ? "bg-white text-black font-semibold duration-200"
+                  : "bg-[#303030]/[0.9]"
+              }`}
+            onClick={() => handleButtonClick(index)}
           >
             {item}
           </button>

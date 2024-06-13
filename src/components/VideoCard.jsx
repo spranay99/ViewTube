@@ -16,12 +16,12 @@ const VideoCard = ({ info }) => {
   const [hovered, setHovered] = useState(false);
   const [channelImage] = useChannelDetails(channelId);
   return (
-    <div
-      className="p-2 shadow-lg"
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-    >
-      <div className="relative">
+    <div className="p-2 shadow-lg">
+      <div
+        className="relative"
+        onMouseEnter={() => setHovered(true)}
+        onMouseLeave={() => setHovered(false)}
+      >
         {hovered && (
           <div className="absolute inset-0">
             <iframe
