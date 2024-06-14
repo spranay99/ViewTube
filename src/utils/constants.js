@@ -11,6 +11,9 @@ export const CHANNEL_INFO_API =
   "https://youtube.googleapis.com/youtube/v3/channels?part=snippet%2CcontentDetails%2Cstatistics&key=" +
   API_KEY;
 
+export const YOUTUBE_SEARCH_API =
+  "http://suggestqueries.google.com/complete/search?client=firefox&ds=yt&q=";
+
 export const TagNames = [
   "All",
   "Gaming",

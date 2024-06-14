@@ -14,13 +14,13 @@ const ButtonList = () => {
     <div
       className={`fixed top-14 ${
         isMenuOpen ? "left-0 md:left-48 lg:left-60" : "left-0 md:left-[94px]"
-      } right-5 p-2 dark:bg-[#0f0f0f] z-10`}
+      }  right-5 p-2 dark:bg-[#0f0f0f] z-10`}
     >
       <div className="flex text-sm gap-4 px-5 overflow-x-scroll no-scrollbar whitespace-nowrap scroll-smooth">
         {TagNames.map((item, index) => (
           <button
             key={index}
-            className={` px-[12px] py-[6px] rounded-lg
+            className={`px-[12px] py-[6px] rounded-lg
               ${
                 activeButton === index
                   ? "bg-white text-black font-semibold duration-200"
