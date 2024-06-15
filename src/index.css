@@ -33,3 +33,9 @@ body::-webkit-scrollbar-thumb {
         scrollbar-width: thin;
     }
 }
+@supports (scrollbar-width: auto) {
+    .live-chat {
+        scrollbar-color: grey rgb(15,15,15);
+        scrollbar-width: thin;
+    }
+}
