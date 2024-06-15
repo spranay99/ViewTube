@@ -6,16 +6,22 @@ import {
 } from "../utils/helper";
 import { PiDotOutlineFill } from "react-icons/pi";
 import useChannelDetails from "../custom-hooks/useChannelDetails";
+import { useDispatch } from "react-redux";
+import { clearMessage } from "../redux/chatSlice";
 
 const RelatedVideos = ({ info }) => {
   const { snippet, statistics, contentDetails } = info;
   const { channelId, channelTitle, title, thumbnails } = snippet;
   const { duration } = contentDetails;
   const [channelImage] = useChannelDetails(channelId);
+  const dispatch = useDispatch();
   return (
     <div
       className="flex flex-col lg:flex-row w-full gap-2 p-2"
-      onClick={() => scrollToTop()}
+      onClick={() => {
+        scrollToTop();
+        dispatch(clearMessage());
+      }}
     >
       <div className="relative lg:w-1/3">
         <img

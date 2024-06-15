@@ -26,7 +26,7 @@ const LiveChat = () => {
           message: Comments[randomNumber].message,
         })
       );
-    }, 2000);
+    }, 1500);
 
     return () => clearInterval(i);
   }, []);

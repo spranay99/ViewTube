@@ -5,6 +5,7 @@ import { Link, useSearchParams } from "react-router-dom";
 import RelatedVideos from "./RelatedVideos";
 import { scrollToTop } from "../utils/helper";
 import LiveChat from "./LiveChat";
+import { clearMessage } from "../redux/chatSlice";
 
 const WatchPage = () => {
   const homeVideos = useSelector((store) => store.video.homeVideos);
@@ -13,8 +14,10 @@ const WatchPage = () => {
   const [searchParams] = useSearchParams();
 
   const videoID = searchParams.get("v");
+
   useEffect(() => {
     dispatch(closeMenu());
+    dispatch(clearMessage());
     scrollToTop();
   }, []);
 
