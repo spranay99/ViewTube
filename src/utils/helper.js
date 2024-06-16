@@ -4,7 +4,7 @@ export const formatNumberToReadableView = (viewCount) => {
   } else if (viewCount >= 1000) {
     return Math.floor(viewCount / 1000) + "K";
   } else {
-    return viewCount.toString();
+    return viewCount;
   }
 };
 
@@ -76,6 +76,13 @@ export const timeAgo = (publishedAt) => {
   } else {
     return secondsAgo === 1 ? "1 second ago" : `${secondsAgo} seconds ago`;
   }
+};
+
+export const postedDate = (postedAt) => {
+  const date = new Date(postedAt);
+  const options = { year: "numeric", month: "short", day: "numeric" };
+  const formattedDate = date.toLocaleDateString("en-US", options);
+  return formattedDate;
 };
 
 export const formatDuration = (videoDuration) => {

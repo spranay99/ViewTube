@@ -16,7 +16,7 @@ const LiveChat = () => {
 
   useEffect(() => {
     const i = setInterval(() => {
-      let randomNumber = Math.floor(Math.random() * 20 + 1);
+      let randomNumber = Math.floor(Math.random() * 20);
 
       //API Polling
       dispatch(

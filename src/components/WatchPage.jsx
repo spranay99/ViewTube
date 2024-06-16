@@ -6,6 +6,7 @@ import RelatedVideos from "./RelatedVideos";
 import { scrollToTop } from "../utils/helper";
 import LiveChat from "./LiveChat";
 import { clearMessage } from "../redux/chatSlice";
+import VideoData from "./VideoData";
 
 const WatchPage = () => {
   const homeVideos = useSelector((store) => store.video.homeVideos);
@@ -32,6 +33,7 @@ const WatchPage = () => {
           referrerPolicy="strict-origin-when-cross-origin"
           allowFullScreen
         ></iframe>
+        <VideoData videoID={videoID} />
       </div>
       <div className="w-full lg:w-1/3 lg:pr-6">
         <LiveChat />
