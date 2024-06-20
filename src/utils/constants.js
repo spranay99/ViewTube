@@ -18,6 +18,10 @@ export const VIDEO_DETAILS_API =
   "https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&key=" +
   API_KEY;
 
+export const YOUTUBE_SEARCH_VIDEO_API =
+  "https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=50&q=&key=" +
+  API_KEY;
+
 export const LIVE_CHAT_COUNT = 50;
 
 export const TagNames = [

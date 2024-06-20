@@ -7,13 +7,13 @@ import { FiBell } from "react-icons/fi";
 import Profile from "../assets/profile.png";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleMenu } from "../redux/appSlice";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { RxCross1 } from "react-icons/rx";
 import { cacheResults } from "../redux/searchSlice";
 
 const Header = () => {
   const dispatch = useDispatch();
-
+  const navigate = useNavigate();
   const searchCache = useSelector((store) => store.search);
 
   const [searchQuery, setSearchQuery] = useState("");
@@ -51,6 +51,12 @@ const Header = () => {
     dispatch(toggleMenu());
   };
 
+  const handleSearchResults = (search) => {
+    navigate(`/search?results=${encodeURIComponent(search)}`);
+    setShowSuggestions(false);
+    setSearchQuery(search);
+  };
+
   return (
     <div className="sticky top-0 z-20 flex flex-row items-center justify-between h-14 px-4 md:px-5 bg-white dark:bg-[#0f0f0f]">
       <div className="flex h-5 items-center">
@@ -77,7 +83,6 @@ const Header = () => {
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               onFocus={() => setShowSuggestions(true)}
-              onBlur={() => setShowSuggestions(false)}
               className="bg-transparent outline-none text-white w-[156px] md:w-56 lg:w-[470px]"
               placeholder="Search"
             />
@@ -99,6 +104,7 @@ const Header = () => {
                 <li
                   key={suggestion}
                   className="py-2 px-3 shadow-sm hover:bg-[#303030] flex items-center gap-2"
+                  onClick={() => handleSearchResults(suggestion)}
                 >
                   <IoIosSearch className="text-xl" /> {suggestion}
                 </li>
