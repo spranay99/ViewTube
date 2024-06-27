@@ -57,6 +57,20 @@ const Header = () => {
     setSearchQuery(search);
   };
 
+  const handleEnterKeyPress = (e) => {
+    if (searchQuery !== "" && e.key === "Enter") {
+      navigate(`/search?results=${encodeURIComponent(searchQuery)}`);
+      setShowSuggestions(false);
+    }
+  };
+
+  const handleSearchButton = () => {
+    if (searchQuery !== "") {
+      navigate(`/search?results=${encodeURIComponent(searchQuery)}`);
+      setShowSuggestions(false);
+    }
+  };
+
   return (
     <div className="sticky top-0 z-20 flex flex-row items-center justify-between h-14 px-4 md:px-5 bg-white dark:bg-[#0f0f0f]">
       <div className="flex h-5 items-center">
@@ -83,6 +97,7 @@ const Header = () => {
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               onFocus={() => setShowSuggestions(true)}
+              onKeyDown={(e) => handleEnterKeyPress(e)}
               className="bg-transparent outline-none text-white w-[156px] md:w-56 lg:w-[470px]"
               placeholder="Search"
             />
@@ -94,7 +109,10 @@ const Header = () => {
             )}
           </div>
           <button className="w-[40px] md:w-[60px] h-8 md:h-10 flex items-center justify-center border border-l-0 border-[#303030] rounded-r-3xl bg-white/[0.1]">
-            <IoIosSearch className="text-white text-xl" />
+            <IoIosSearch
+              className="text-white text-xl"
+              onClick={handleSearchButton}
+            />
           </button>
         </div>
         {showSuggestions && (

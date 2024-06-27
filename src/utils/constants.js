@@ -12,7 +12,10 @@ export const CHANNEL_INFO_API =
   API_KEY;
 
 export const YOUTUBE_SEARCH_API =
-  "http://suggestqueries.google.com/complete/search?client=firefox&ds=yt&q=";
+  "https://api.codetabs.com/v1/proxy?quest=" +
+  encodeURIComponent(
+    "http://suggestqueries.google.com/complete/search?client=firefox&ds=yt&q="
+  );
 
 export const VIDEO_DETAILS_API =
   "https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&key=" +

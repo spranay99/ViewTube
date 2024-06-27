@@ -86,6 +86,8 @@ export const postedDate = (postedAt) => {
 };
 
 export const formatDuration = (videoDuration) => {
+  if (videoDuration == undefined) return;
+
   const regex =
     /P(?:([0-9]+)Y)?(?:([0-9]+)M)?(?:([0-9]+)D)?T(?:([0-9]+)H)?(?:([0-9]+)M)?(?:([0-9]+)S)?/;
   const matches = videoDuration.match(regex);
