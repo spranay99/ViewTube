@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { closeMenu } from "../redux/appSlice";
 import { Link, useSearchParams } from "react-router-dom";
@@ -7,8 +7,13 @@ import { scrollToTop } from "../utils/helper";
 import LiveChat from "./LiveChat";
 import { clearMessage } from "../redux/chatSlice";
 import VideoData from "./VideoData";
+import CommentsContainer from "./CommentsContainer";
+import { YOUTUBE_COMMENTS_API } from "../utils/constants";
+import WatchPageShimmer from "./WatchPageShimmer";
 
 const WatchPage = () => {
+  const [comments, setComments] = useState([]);
+
   const homeVideos = useSelector((store) => store.video.homeVideos);
   const dispatch = useDispatch();
 
@@ -22,6 +27,22 @@ const WatchPage = () => {
     scrollToTop();
   }, []);
 
+  useEffect(() => {
+    fetchComments();
+  }, []);
+
+  const fetchComments = async () => {
+    const data = await fetch(
+      `${YOUTUBE_COMMENTS_API}&order=relevance&videoId=${videoID}`
+    );
+    const response = await data.json();
+    setComments(response.items);
+  };
+
+  if (comments.length === 0) {
+    return <WatchPageShimmer />;
+  }
+
   return (
     <div className="flex flex-col lg:flex-row w-full p-4 sm:p-6 gap-6 dark:bg-[#0f0f0f] text-white">
       <div className="w-full lg:w-2/3 lg:pl-6">
@@ -34,6 +55,9 @@ const WatchPage = () => {
           allowFullScreen
         ></iframe>
         <VideoData videoID={videoID} />
+        <div>
+          <CommentsContainer comments={comments} />
+        </div>
       </div>
       <div className="w-full lg:w-1/3 lg:pr-6">
         <LiveChat />
