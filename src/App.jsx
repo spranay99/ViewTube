@@ -4,9 +4,9 @@ import { Provider } from "react-redux";
 import store from "./redux/store";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 
-const MainContainer = lazy(() => import("./components/MainContainer"));
-const WatchPage = lazy(() => import("./components/WatchPage"));
-const SearchPage = lazy(() => import("./components/SearchPage"));
+const MainContainer = lazy(() => import("./pages/MainContainer"));
+const WatchPage = lazy(() => import("./pages/WatchPage"));
+const SearchPage = lazy(() => import("./pages/SearchPage"));
 
 const appRouter = createBrowserRouter([
   {

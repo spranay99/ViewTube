@@ -61,12 +61,14 @@ const SearchResultCard = ({ info, videoID }) => {
           src={thumbnails?.medium?.url}
           alt={`${title}'s video`}
         />
-        <div className="absolute bottom-1 right-1 px-2 py-1">
-          <div className="absolute inset-0 bg-[#0f0f0f] opacity-60 rounded-lg"></div>
-          <div className="relative text-xs font-medium">
-            {formatDuration(duration)}
+        {!hovered && (
+          <div className="absolute bottom-1 right-1 px-2 py-1">
+            <div className="absolute inset-0 bg-[#0f0f0f] opacity-60 rounded-lg"></div>
+            <div className="relative text-xs font-medium">
+              {formatDuration(duration)}
+            </div>
           </div>
-        </div>
+        )}
       </div>
       <div className="flex flex-col lg:w-2/3 gap-1 p-2">
         <div className="flex items-center gap-2 w-3/4">

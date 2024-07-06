@@ -1,6 +1,6 @@
 import React from "react";
 import VideoCard from "./VideoCard";
-import HomePageShimmer from "./HomePageShimmer";
+import HomePageShimmer from "../shimmer/HomePageShimmer";
 import useVideos from "../custom-hooks/useVideos";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";

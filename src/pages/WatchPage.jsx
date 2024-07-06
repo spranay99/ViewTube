@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { closeMenu } from "../redux/appSlice";
 import { Link, useSearchParams } from "react-router-dom";
-import RelatedVideos from "./RelatedVideos";
-import { scrollToTop } from "../utils/helper";
-import LiveChat from "./LiveChat";
+import { closeMenu } from "../redux/appSlice";
 import { clearMessage } from "../redux/chatSlice";
-import VideoData from "./VideoData";
-import CommentsContainer from "./CommentsContainer";
+import { scrollToTop } from "../utils/helper";
 import { YOUTUBE_COMMENTS_API } from "../utils/constants";
-import WatchPageShimmer from "./WatchPageShimmer";
+import RelatedVideos from "../components/RelatedVideos";
+import LiveChat from "../components/LiveChat";
+import VideoData from "../components/VideoData";
+import CommentsContainer from "../components/CommentsContainer";
+import WatchPageShimmer from "../shimmer/WatchPageShimmer";
 
 const WatchPage = () => {
   const [comments, setComments] = useState([]);

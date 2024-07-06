@@ -4,8 +4,8 @@ import { useLocation, useSearchParams } from "react-router-dom";
 import { YOUTUBE_SEARCH_VIDEO_API } from "../utils/constants";
 import { Link } from "react-router-dom";
 
-import SearchResultCard from "./SearchResultCard";
-import SearchPageShimmer from "./SearchPageShimmer";
+import SearchResultCard from "../components/SearchResultCard";
+import SearchPageShimmer from "../shimmer/SearchPageShimmer";
 import { scrollToTop } from "../utils/helper";
 
 const SearchPage = () => {
