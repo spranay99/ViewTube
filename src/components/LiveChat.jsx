@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { addMessage } from "../redux/chatSlice";
 import { Comments } from "../utils/constants";
 import { RxCross1 } from "react-icons/rx";
-import Profile from "../assets/profile.png";
+import Profile from "../../public/profile.png";
 import { VscSend } from "react-icons/vsc";
 
 const LiveChat = () => {

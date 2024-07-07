@@ -4,7 +4,7 @@ import { SlMenu } from "react-icons/sl";
 import { IoIosSearch } from "react-icons/io";
 import { RiVideoAddLine } from "react-icons/ri";
 import { FiBell } from "react-icons/fi";
-import Profile from "../assets/profile.png";
+import Profile from "../../public/profile.png";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleMenu } from "../redux/appSlice";
 import { Link, useNavigate } from "react-router-dom";

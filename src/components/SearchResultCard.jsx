@@ -78,7 +78,6 @@ const SearchResultCard = ({ info, videoID }) => {
           <div className="flex items-center">
             <div className="text-white">
               {formatNumberToReadableView(viewCount)}
-              {/* {formatNumberToReadableView(statistics?.viewCount)}{" "} */}
             </div>
             <PiDotOutlineFill className="text-white" />
             <div>{timeAgo(publishedAt)}</div>

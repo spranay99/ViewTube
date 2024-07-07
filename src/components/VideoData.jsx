@@ -1,8 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { CHANNEL_INFO_API, VIDEO_DETAILS_API } from "../utils/constants";
-import useChannelDetails from "../custom-hooks/useChannelDetails";
-import Profile from "../assets/profile.png";
-
 import { BiLike, BiDislike, BiDotsHorizontalRounded } from "react-icons/bi";
 import { PiShareFat } from "react-icons/pi";
 import { LiaDownloadSolid } from "react-icons/lia";
